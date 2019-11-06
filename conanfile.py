@@ -19,8 +19,12 @@ class NanorangeConan(ConanFile):
     # No settings/options are necessary, this is header only
 
     def configure(self):
-        if not self.settings.compiler.cppstd in ["17", "20", "gnu17", "gnu20"]:
-            raise ConanInvalidConfiguration("nanoRange requires at least c++17")
+        if self.settings.compiler == "Visual Studio":
+            if not any([self.settings.compiler.cppstd == std for std in ["17", "20"]]):
+                raise ConanInvalidConfiguration("nanoRange requires at least c++17")
+        else:
+            if not self.settings.compiler.cppstd in ["17", "20", "gnu17", "gnu20"]:
+                raise ConanInvalidConfiguration("nanoRange requires at least c++17")
 
     def source(self):
         tools.get("https://github.com/tcbrindle/NanoRange/archive/abc34279d71369527e4da43cc4d02cf77446f79a.tar.gz", destination="source_folder", sha256="799431094ab784eb3cdbcd6de6681ff5d8b2b28e1a1e26e0a3a94fbfbfcd7e75" ) 
