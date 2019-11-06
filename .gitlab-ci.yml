@@ -1,7 +1,7 @@
 
 variables:
     CONAN_USERNAME: "user"
-    CONAN_REFERENCE: "nanoRange/0.1"
+    CONAN_REFERENCE: "nanorange/20191001"
     CONAN_CHANNEL: "channel"
     CONAN_LOGIN_USERNAME: "user"
     
